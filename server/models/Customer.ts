@@ -14,6 +14,5 @@ export class Customer extends UserBase {
 		return this._profile;
 	}
 	protected _profile: UserProfileData;
-	save = (): void => {
-	}
+	save = (): void => {}
 }

@@ -9,8 +9,7 @@ var Customer = (function (_super) {
     __extends(Customer, _super);
     function Customer(id, user_info, profile) {
         var _this = _super.call(this, id, user_info) || this;
-        _this.save = function () {
-        };
+        _this.save = function () { };
         _this._profile = profile;
         return _this;
     }

@@ -54,7 +54,7 @@ let profile_data = {
 	}
 };
 
-let customer = new Customer(1, user_info, profile_data);
+let customer = new Customer(10,user_info,profile_data);
 
 customer.profile.address[0]['shipping'].street = 'Unnamed Road';
 

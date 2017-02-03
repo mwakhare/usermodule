@@ -52,7 +52,7 @@ var profile_data = {
         designers: [-1]
     }
 };
-var customer = new Customer_1.Customer(1, user_info, profile_data);
+var customer = new Customer_1.Customer(10, user_info, profile_data);
 customer.profile.address[0]['shipping'].street = 'Unnamed Road';
 console.log(util.inspect(customer, false, null));
 //# sourceMappingURL=app.js.map

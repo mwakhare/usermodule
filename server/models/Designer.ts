@@ -6,7 +6,5 @@ class Designer extends UserBase {
 	protected profile: UserProfileData;
 	protected details: DesignerData;
 
-	save = () => {
-		return this;
-	}
+	save = () :void => {}
 }
