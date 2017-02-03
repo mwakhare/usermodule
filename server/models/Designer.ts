@@ -5,4 +5,8 @@ import {DesignerData} from './types/DesignerData';
 class Designer extends UserBase {
 	protected profile: UserProfileData;
 	protected details: DesignerData;
+
+	save = () => {
+		return this;
+	}
 }

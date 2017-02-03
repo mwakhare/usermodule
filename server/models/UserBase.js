@@ -1,10 +1,7 @@
 "use strict";
 var UserBase = (function () {
     function UserBase(id, user_info) {
-        var _this = this;
-        this.save = function () {
-            return _this;
-        };
+        this.save = function () { };
         this._id = id;
         this.user_info = user_info;
     }

@@ -1,5 +1,5 @@
-import * as util from 'util';
 import {Customer} from './server/models/Customer';
+import * as util from "util";
 
 let user_info = {
 	name: 'Ajitem Sahasrabuddhe',
@@ -35,26 +35,28 @@ let user_info = {
 let profile_data = {
 	profile_pic: '',
 	address: [{
-			shipping: {
-				building: 'Trendy Towers 30',
-				apartment: 1801,
-				landmark: 'Amanora Town Center',
-				street: '',
-				province: 'Maharashtra',
-				zip_code: '411028',
-				country: 'India',
-				city: 'Pune'
-			}
-		}],
+		shipping: {
+			building: 'Trendy Towers 30',
+			apartment: 1801,
+			landmark: 'Amanora Town Center',
+			street: '',
+			province: 'Maharashtra',
+			zip_code: '411028',
+			country: 'India',
+			city: 'Pune'
+		}
+	}],
 	role: 2,
 	capablities: 3,
 	favourites: {
 		products: [-1],
 		designers: [-1]
 	}
-}
+};
 
-let customer = new Customer( 1, user_info, profile_data);
+let customer = new Customer(1, user_info, profile_data);
+
+customer.profile.address[0]['shipping'].street = 'Unnamed Road';
 
 console.log(util.inspect(customer, false, null));
 

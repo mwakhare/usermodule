@@ -8,7 +8,11 @@ var UserBase_1 = require("./UserBase");
 var Designer = (function (_super) {
     __extends(Designer, _super);
     function Designer() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.save = function () {
+            return _this;
+        };
+        return _this;
     }
     return Designer;
 }(UserBase_1.UserBase));

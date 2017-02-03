@@ -1,6 +1,6 @@
 "use strict";
-var util = require("util");
 var Customer_1 = require("./server/models/Customer");
+var util = require("util");
 var user_info = {
     name: 'Ajitem Sahasrabuddhe',
     email: 'asahasrabuddhe@torinit.com',
@@ -53,5 +53,6 @@ var profile_data = {
     }
 };
 var customer = new Customer_1.Customer(1, user_info, profile_data);
+customer.profile.address[0]['shipping'].street = 'Unnamed Road';
 console.log(util.inspect(customer, false, null));
 //# sourceMappingURL=app.js.map

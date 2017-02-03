@@ -58,7 +58,15 @@ describe('User Model', function () {
         it('should initialize and return proper values', function () {
             var customer = new Customer_1.Customer(1, user_info, profile_data);
             customer.user_info.name.should.be.a('string');
-            customer.user_info.name.should.equal('Ajitem');
+            customer.user_info.name.should.equal('Ajitem Sahasrabuddhe');
+        });
+        it('should have the setter and getter functioning properly', function () {
+            var customer = new Customer_1.Customer(1, user_info, profile_data);
+            customer.profile.address[0].should.have.key('shipping');
+            customer.profile.address[0]['shipping'].should.have.property('street');
+            customer.profile.address[0]['shipping'].street.should.equal('');
+            customer.profile.address[0]['shipping'].street = 'Unnamed Road';
+            customer.profile.address[0]['shipping'].street.should.equal('Unnamed Road');
         });
     });
 });

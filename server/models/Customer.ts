@@ -5,7 +5,15 @@ import {UserProfileData} from './types/UserProfileData';
 export class Customer extends UserBase {
 	constructor( id: number, user_info: UserInfo, profile: UserProfileData) {
 		super(id, user_info);
-		this.profile = profile;
+		this._profile = profile;
 	}
-	protected profile: UserProfileData;
+	set profile(profile: UserProfileData) {
+		this._profile = profile;
+	}
+	get profile(): UserProfileData {
+		return this._profile;
+	}
+	protected _profile: UserProfileData;
+	save = (): void => {
+	}
 }

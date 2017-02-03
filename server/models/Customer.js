@@ -9,9 +9,21 @@ var Customer = (function (_super) {
     __extends(Customer, _super);
     function Customer(id, user_info, profile) {
         var _this = _super.call(this, id, user_info) || this;
-        _this.profile = profile;
+        _this.save = function () {
+        };
+        _this._profile = profile;
         return _this;
     }
+    Object.defineProperty(Customer.prototype, "profile", {
+        get: function () {
+            return this._profile;
+        },
+        set: function (profile) {
+            this._profile = profile;
+        },
+        enumerable: true,
+        configurable: true
+    });
     return Customer;
 }(UserBase_1.UserBase));
 exports.Customer = Customer;

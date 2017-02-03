@@ -1,7 +1,7 @@
 import {UserInfo} from './types/UserInfo';
 import * as mysql from 'mysql';
 
-export class UserBase {
+export abstract class UserBase {
 	protected _id: number | null;
 	protected _user_info: UserInfo;
 	constructor(id: number, user_info: UserInfo) {
@@ -20,7 +20,5 @@ export class UserBase {
 	set user_info(user_info: UserInfo) {
 		this._user_info = user_info;
 	}
-	save = (): UserBase => {
-		return this;
-	}
+	abstract save = (): void => {}
 }
