@@ -6,11 +6,12 @@ var getConnection = require('../../config/db.service');
 
 export class UserController {
 	public load(req, res, next, id) {
-
+		req.id = id;
+		return next(req);
 	}
 
 	public get(req, res) {
-
+		res.json(req.id);
 	}
 
 	public update(req, res) {
@@ -18,6 +19,7 @@ export class UserController {
 	}			
 
 	public list(req, res) {
+		//res.json(1);
 						// 		var userQuery = 'select * from user';
 								
 						// 		dbSql.pool (function(err, con) { // the function is called when you have a connection

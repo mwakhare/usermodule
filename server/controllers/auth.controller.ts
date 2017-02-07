@@ -6,7 +6,7 @@ import * as config from '../../config/env';
 
 export class AuthController {
 	public login(req, res, next) {
-
+		res.json(req.body);
 	}
 
 	public register(req, res, next) {

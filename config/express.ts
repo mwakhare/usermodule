@@ -70,11 +70,12 @@ export class Application {
 	private errorHandlers(): void {
 		this._app.use((err,req,res,next) => {
 			if(err) {
-				let unifiedErrorMessage = err.errors.map((error) => {
-					return error.messages.join('. ');
-				}).join(' and ');
-				let error = new APIError(unifiedErrorMessage, err.status, true);
-				return next(err);
+				return(err);
+				// let unifiedErrorMessage = err.errors.map((error) => {
+				// 	return error.messages.join('. ');
+				// }).join(' and ');
+				// let error = new APIError(unifiedErrorMessage, err.status, true);
+				// return next(err);
 			}
 		});
 

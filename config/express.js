@@ -57,11 +57,7 @@ var Application = (function () {
     Application.prototype.errorHandlers = function () {
         this._app.use(function (err, req, res, next) {
             if (err) {
-                var unifiedErrorMessage = err.errors.map(function (error) {
-                    return error.messages.join('. ');
-                }).join(' and ');
-                var error = new APIError_1.APIError(unifiedErrorMessage, err.status, true);
-                return next(err);
+                return (err);
             }
         });
         this._app.use(function (req, res, next) {

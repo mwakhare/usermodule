@@ -11,7 +11,7 @@ export class UserRoute {
 	constructor() {
 		let user = new UserController();
 		this._router = express.Router();
-		this._router.route('/').post(expressJwt({ secret: (<any>config).jwt_secret }), user.list);
+		this._router.route('/').get(user.list);
 		this._router.param('userID', user.load);
 		this._router.route('/:userID')
 			.get(expressJwt({ secret: (<any>config).jwt_secret }), user.get)
