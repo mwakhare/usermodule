@@ -10,6 +10,7 @@ var Customer = (function (_super) {
     function Customer(id, user_info, profile) {
         var _this = _super.call(this, id, user_info) || this;
         _this.save = function () { };
+        _this.delete = function () { return false; };
         _this._profile = profile;
         return _this;
     }

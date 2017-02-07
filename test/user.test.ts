@@ -1,4 +1,4 @@
-import {Customer} from '../server/models/Customer';
+import {Customer} from '../server/models/User/Customer';
 import * as chai from 'chai';
 
 chai.should();

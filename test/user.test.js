@@ -1,5 +1,5 @@
 "use strict";
-var Customer_1 = require("../server/models/Customer");
+var Customer_1 = require("../server/models/User/Customer");
 var chai = require("chai");
 chai.should();
 describe('User Model', function () {

@@ -10,6 +10,7 @@ var Designer = (function (_super) {
     function Designer() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.save = function () { };
+        _this.delete = function () { return true; };
         return _this;
     }
     return Designer;

@@ -1,4 +1,4 @@
-import {UserInfo} from './types/UserInfo';
+import {UserInfo} from '../types/UserInfo';
 import * as mysql from 'mysql';
 
 export abstract class UserBase {
@@ -21,4 +21,5 @@ export abstract class UserBase {
 		this._user_info = user_info;
 	}
 	abstract save = (): void => {}
+	abstract delete = (): boolean => { return false; }
 }

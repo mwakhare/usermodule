@@ -2,6 +2,7 @@
 var UserBase = (function () {
     function UserBase(id, user_info) {
         this.save = function () { };
+        this.delete = function () { return false; };
         this._id = id;
         this.user_info = user_info;
     }

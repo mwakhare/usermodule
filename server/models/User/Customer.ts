@@ -1,6 +1,6 @@
-import {UserInfo} from './types/UserInfo';
+import {UserInfo} from '../types/UserInfo';
 import {UserBase} from './UserBase';
-import {UserProfileData} from './types/UserProfileData';
+import {UserProfileData} from '../types/UserProfileData';
 
 export class Customer extends UserBase {
 	constructor( id: number, user_info: UserInfo, profile: UserProfileData) {
@@ -15,4 +15,5 @@ export class Customer extends UserBase {
 	}
 	protected _profile: UserProfileData;
 	save = (): void => {}
+	delete = (): boolean => { return false; }
 }
