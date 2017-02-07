@@ -1,4 +1,5 @@
 import * as mysql from "mysql";
+import * as config from './env';
 
 class DBService {
     
@@ -10,10 +11,10 @@ class DBService {
             
             _db_pool = mysql.createPool ({
                 connectionLimit : 100, //max limit to fix.
-                host     : 'localhost',
-                user     : 'milind',
-                password : 'Tori@2016',
-                database : 'korsall'
+                host     : (<any>config).db_host(),
+                user     : (<any>config).db_user(),
+                password : (<any>config).db_pass(),
+                database : (<any>config).db_name()
             });
         }
 
