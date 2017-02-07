@@ -1,4 +1,4 @@
-export class UserController {
+export class ProductController {
 	public load(req, res, next, id) {
 
 	}

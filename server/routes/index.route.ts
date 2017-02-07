@@ -1,6 +1,6 @@
 import * as express from "express";
 import {AuthRoute} from './auth.route';
-import {UserRoute} from './user.route';
+import {ProductRoute} from './product.route';
 
 let router = express.Router();
 
@@ -9,9 +9,9 @@ router.get('/health-check', (req, res) => {
 });
 
 let authRoute = new AuthRoute();
-let userRoute = new UserRoute();
+let productRoute = new ProductRoute();
 
 router.use('/auth', authRoute.route());
-router.use('/user', userRoute.route());
+router.use('/product', productRoute.route());
 
 export = router;

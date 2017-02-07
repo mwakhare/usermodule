@@ -1,15 +1,11 @@
-import * as util from "util";
-import * as config from './config/env';
-import {Application} from './config/express';
+import {Product} from '../server/models/Product/Product';
+import * as chai from 'chai';
 
-import {Product} from './server/models/Product/Product';
+chai.should();
 
-
-
-
-
-let  product_info =
-        {
+describe('Product Model', () => {
+	describe('Initialize Object', () => {
+		let product_info = {
             "Name" :"product1",
             "SKU_No":"pr4571",
             "Desc"  : "product desc",
@@ -65,18 +61,21 @@ let  product_info =
 
             "Sale_Duration":    "03/05/2014",
             "Tag": 
-                            [   {
-                                 tag1: 'tag1'
-                                },
-                                 {
-                                 tag2: 'tag2'
-                            }],
+		                    [   {
+		                         tag1: 'tag1'
+		                        },
+		                         {
+		                         tag2: 'tag2'
+		                    }],
         }  
 
-        let product = new Product(20,product_info);
-        console.log(util.inspect(product, false, null));
+		
+		it('should initialize and return proper values', function() {
+			let product = new Product(20, product_info);
+			product.product_info.Name.should.be.a('string');
+			product.product_info.Name.should.equal('product1');
+		});
 
-		let app = new Application();
-		app.listen((<any>config).app_port, (<any>config).env);
-		console.log('app.ts running');
-
+		
+	});
+});

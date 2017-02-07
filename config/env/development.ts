@@ -1,3 +1,3 @@
 import Environment from './environment';
 
- export = new Environment('development', true, '0a6b944d-d2fb-46fc-a85e-0295c986cd9f', 3030, 'localhost', 'korsall', 'root', 'KaaliMirch');
+ export = new Environment('development', true, '0a6b944d-d2fb-46fc-a85e-0295c986cd9f', 3030, 'localhost', 'KorsAll', 'raghuram', 'Tori@2016');

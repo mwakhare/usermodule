@@ -1,7 +1,7 @@
 {
-  "name": "usermodule",
+  "name": "Product",
   "version": "1.0.0",
-  "description": "A simple user module to faciliate all user related tasks in a project",
+  "description": "A simple product module to faciliate all user related tasks in a project",
   "main": "app.js",
   "scripts": {
     "prestart": "grunt",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GreatDharmatma/usermodule.git"
+    "url": "git+https://github.com/GreatDharmatma/Product.git"
   },
   "author": "Ajitem Sahasrabuddhe",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/GreatDharmatma/usermodule/issues"
+    "url": "https://github.com/GreatDharmatma/Product/issues"
   },
-  "homepage": "https://github.com/GreatDharmatma/usermodule#readme",
+  "homepage": "https://github.com/GreatDharmatma/Product#readme",
   "devDependencies": {
     "@types/bcryptjs": "^2.4.0",
     "@types/chai": "^3.4.34",
