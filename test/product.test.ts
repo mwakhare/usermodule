@@ -74,8 +74,10 @@ describe('Product Model', () => {
 			let product = new Product(20, product_info);
 			product.product_info.Name.should.be.a('string');
 			product.product_info.Name.should.equal('product1');
+			product.product_info.SKU_No.should.be.a('string');
+			product.product_info.Desc.should.be.a('string');
+			product.product_info.price.should.be.a('number');
+			product.product_info.Cat_Id.should.be.a("number");
 		});
-
-		
 	});
 });

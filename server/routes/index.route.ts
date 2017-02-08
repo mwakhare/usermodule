@@ -13,5 +13,4 @@ let productRoute = new ProductRoute();
 
 router.use('/auth', authRoute.route());
 router.use('/product', productRoute.route());
-
 export = router;
