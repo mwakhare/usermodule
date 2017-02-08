@@ -57,6 +57,7 @@ describe('User Model', function () {
         };
         it('should initialize and return proper values', function () {
             var customer = new Customer_1.Customer(1, user_info, profile_data);
+            customer.save();
             customer.user_info.name.should.be.a('string');
             customer.user_info.name.should.equal('Ajitem Sahasrabuddhe');
         });

@@ -1,15 +1,13 @@
-
-var getConnection = require('../../config/db.service');
-
 export class UserController {
 	public load(req, res, next, id) {
+		console.log('User Loaded: ' + id);
 		req.id = id;
-		//res.json(req.id);
-		return next(req);
+		return next();
 	}
 
 	public get (req, res) {
-		res.json(req.id);
+		console.log('get');
+		return res.json(req.id);
 
 		//data base connection			
 		// getConnection (function (err, con) 
@@ -45,44 +43,46 @@ export class UserController {
 	}
 
 	public update(req, res) {
-
+		console.log('update');
+		return res.json(req.id);
 	}			
 
 	public list(req, res) {
 		//data base connection			
-		getConnection (function (err, con) 
-		{
+		// getConnection (function (err, con) 
+		// {
   							
-			if(err) 
-			{  
-				console.log("getConnection (user list) error");
-				res.json (false);
-			}
+		// 	if(err) 
+		// 	{  
+		// 		console.log("getConnection (user list) error");
+		// 		res.json (false);
+		// 	}
 								
-			var userQuery = 'select * from user';
+		// 	var userQuery = 'select * from user';
 								
-			console.log ('database connection (user list) thread id: ' + con.threadId);
+		// 	console.log ('database connection (user list) thread id: ' + con.threadId);
 								
-			con.query(userQuery, function(err, users){
+		// 	con.query(userQuery, function(err, users){
 				
-				con.release();
+		// 		con.release();
 
-				if(err) 
-				{  
-					console.log("userQuery (user list) error");
-					res.json (false);
-				}
-				else
-				{
-					res.json (users);
-				}
-			});
-		});
+		// 		if(err) 
+		// 		{  
+		// 			console.log("userQuery (user list) error");
+		// 			res.json (false);
+		// 		}
+		// 		else
+		// 		{
+		// 			res.json (users);
+		// 		}
+		// 	});
+		// });
 
 	}
 			
 						
 	public remove(req, res) {
-
+		console.log('delete');
+		return res.json(req.id);
 	}
 }

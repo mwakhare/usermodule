@@ -23,17 +23,13 @@ import * as config from './env';
 //     }
 // }
 
-        
+
 var pool  = mysql.createPool({
                 connectionLimit : 100, //max limit to fix.
-                // host     : (<any>config).db_host(),
-                // user     : (<any>config).db_user(),
-                // password : (<any>config).db_pass(),
-                // database : (<any>config).db_name()
-                host     : 'localhost',
-                user     : 'milind',
-                password : 'Tori@2016',
-                database : 'korsall'
+                host     : (<any>config).db_host,
+                user     : (<any>config).db_user,
+                password : (<any>config).db_pass,
+                database : (<any>config).db_name
 });
 
 var getConnection = function (callback) {
@@ -42,12 +38,12 @@ var getConnection = function (callback) {
         //pass the error to the callback instead of throwing it
         if(err) 
         {
-            console.log("pool.getConnection error");
+            console.log("pool.getConnection error" + err);
             return callback(err);
         }
         callback(null, connection);
     });
 };
 
-module.exports = getConnection;
+export = getConnection;
 

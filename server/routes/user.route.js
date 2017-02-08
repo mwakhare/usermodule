@@ -7,7 +7,7 @@ var UserRoute = (function () {
     function UserRoute() {
         var user = new user_controller_1.UserController();
         this._router = express.Router();
-        this._router.route('/').get(user.list);
+        this._router.route('/').get(expressJwt({ secret: config.jwt_secret }), user.list);
         this._router.param('userID', user.load);
         this._router.route('/:userID')
             .get(expressJwt({ secret: config.jwt_secret }), user.get)
