@@ -40,5 +40,50 @@ export class Customer extends UserBase {
 		});
 	}
 
+	public update = (): void => {
+		getConnection( (err,con) => {
+			if (err) {
+				console.log({"code" : 100, "status" : "Error in connection database"});
+          		return;
+        	}   
+        	console.log('connected as id ' + con.threadId);
+       
+			let query = `UPDATE user SET user_info = ? WHERE id = ?`;
+			con.query( query, JSON.stringify(this.user_info), this.id, (err, result) => {
+				if(err) {
+					console.log(err);
+					return
+				}
+				if( !result.insertId ) {
+					console.log(result);
+					return;
+				}
+				this.id = result.insertId;
+				console.log('User Created ' + result.insertId);
+			});
+		});
+		getConnection( (err,con) => {
+			if (err) {
+				console.log({"code" : 100, "status" : "Error in connection database"});
+          		return;
+        	}   
+        	console.log('connected as id ' + con.threadId);
+       
+			let query = `UPDATE user_profile SET profile_picture = ?,  WHERE id = ?`;
+			con.query( query, JSON.stringify(this.user_info), this.id, (err, result) => {
+				if(err) {
+					console.log(err);
+					return
+				}
+				if( !result.insertId ) {
+					console.log(result);
+					return;
+				}
+				this.id = result.insertId;
+				console.log('User Created ' + result.insertId);
+			});
+		});
+	}
+
 	delete = (): boolean => { return false; }
 }
