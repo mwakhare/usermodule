@@ -114,7 +114,7 @@ describe('User Model', () => {
 		};
 
 		
-		// it('getone customer testing', function(){
+		// it('getone customer testing', function(done){
 		// 	Customer.getOne (7, function (err, user)
 		// 	{
 		// 		if (err)
@@ -124,9 +124,10 @@ describe('User Model', () => {
 		// 		}
 		// 		console.log(user);
 		// 	});
+		// 	done ();
 		// });
 
-		// it('getall customers testing', function(){
+		// it('getall customers testing', function(done){
 		// 	Customer.list (function (err, user)
 		// 	{
 		// 		if (err)
@@ -136,22 +137,27 @@ describe('User Model', () => {
 		// 		}
 		// 		console.log(user);
 		// 	});
+		// 	done ();
 		// });
 
-		// it('save method testing:', function() {
+		// it('save method testing:', function(done) {
 		// 	let customer = new Customer(33, user_info1, profile_data1);
 		// 	customer.save();
+
+		// 	done ();
 		// });
 
-		// it('update method testing:', function() {
+		// it('update method testing:', function(done) {
 		// 	let customer = new Customer(8, user_info1, profile_data1);
 		// 	customer.update();
+
+		// 	done ();
 		// });
 		
 
-		// it('delete method testing:', function() {
-		// 	let customer = new Customer(8, user_info1, profile_data1);
-		// 	customer.delete();
-		// });
+		it('delete method testing:', function() {
+			let customer = new Customer(8, user_info1, profile_data1);
+			customer.delete();
+		});
 	});
 });

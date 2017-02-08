@@ -106,15 +106,9 @@ describe('User Model', function () {
                 designers: [-1]
             }
         };
-        it('one by one CRUD function testing', function () {
-        });
-        it('getall customers testing', function () {
-            Customer_1.Customer.list(function (err, user) {
-                if (err) {
-                    console.log(" Customer getall has error: " + err);
-                }
-                console.log(user);
-            });
+        it('delete method testing:', function () {
+            var customer = new Customer_1.Customer(8, user_info1, profile_data1);
+            customer.delete();
         });
     });
 });
