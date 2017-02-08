@@ -8,20 +8,30 @@ import * as config from '../../config/env';
 
 export class ProductRoute {
 	private _router;
-	constructor() {
+	/*constructor() {
 		let product = new ProductController();
 		this._router = express.Router();
-		/*this._router.route('/').get(expressJwt({ secret: (<any>config).jwt_secret }), product.list);*/
+		// this._router.route('/').get(expressJwt({ secret: (<any>config).jwt_secret }), product.list);
 		this._router.route('/').get(product.list);
 		this._router.route('/:id').get(product.get);
 		this._router.route('/:id').delete(product.remove);
 		this._router.param('productID',product.load);
 		this._router.route('/:productID')
-			/*.get(expressJwt({ secret: (<any>config).jwt_secret }), product.get)*/
+			// .get(expressJwt({ secret: (<any>config).jwt_secret }), product.get)
 			.post(expressJwt({ secret: (<any>config).jwt_secret }), product.update)
-			/*.delete(expressJwt({ secret: (<any>config).jwt_secret }), product.remove);*/
-	}
+			// .delete(expressJwt({ secret: (<any>config).jwt_secret }), product.remove);
+	}*/
 
+		constructor() {
+		let product = new ProductController();
+		this._router = express.Router();
+		this._router.route('/').get(expressJwt({ secret: (<any>config).jwt_secret }), product.list);
+		this._router.param('productID',product.load);
+		this._router.route('/:productID')
+			.get(expressJwt({ secret: (<any>config).jwt_secret }), product.get)
+			.post(expressJwt({ secret: (<any>config).jwt_secret }), product.update)
+			.delete(expressJwt({ secret: (<any>config).jwt_secret }), product.remove);
+	}
 	public route() {
 		return this._router;
 	}

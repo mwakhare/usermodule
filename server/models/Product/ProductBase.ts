@@ -1,5 +1,5 @@
 import {ProductInfo} from '../types/ProductInfo';
-/*import * as mysql from 'mysql';*/
+import * as mysql from 'mysql';
 
 export abstract class ProductBase {
 	protected _id: number | null;

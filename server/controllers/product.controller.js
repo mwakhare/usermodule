@@ -1,25 +1,24 @@
 "use strict";
-var getConnection = require('../../config/db.service');
+var getConnection = require("../../config/db.service");
 var ProductController = (function () {
     function ProductController() {
     }
-    ProductController.prototype.load = function (req, res, next, newProduct) {
+    ProductController.prototype.get = function (req, res) {
+        console.log('get');
+        return res.json(req.id);
     };
-    ProductController.prototype.get = function (req, res, id) {
-        var id = req.params.id;
-        getConnection(function (err, con) {
-            if (err) {
-                res.json(false);
-            }
-            var productQuery = 'select * from product where id = ? ';
-            console.log("con: " + con);
-            con.query(productQuery, id, function (err, product) {
-                con.release();
-                res.json(product);
-            });
-        });
+    ProductController.prototype.load = function (req, res, next, id) {
+        console.log('Product Loaded: ' + id);
+        req.id = id;
+        return next();
     };
     ProductController.prototype.update = function (req, res) {
+        console.log('update');
+        return res.json(req.id);
+    };
+    ProductController.prototype.remove = function (req, res) {
+        console.log('delete');
+        return res.json(req.id);
     };
     ProductController.prototype.list = function (req, res) {
         getConnection(function (err, con) {
@@ -29,20 +28,6 @@ var ProductController = (function () {
             var productQuery = 'select * from product';
             console.log("con: " + con);
             con.query(productQuery, function (err, product) {
-                con.release();
-                res.json(product);
-            });
-        });
-    };
-    ProductController.prototype.remove = function (req, res, id) {
-        var id = req.params.id;
-        getConnection(function (err, con) {
-            if (err) {
-                res.json(false);
-            }
-            var productQuery = 'delete  from product where id = ? ';
-            console.log("con: " + con);
-            con.query(productQuery, id, function (err, product) {
                 con.release();
                 res.json(product);
             });

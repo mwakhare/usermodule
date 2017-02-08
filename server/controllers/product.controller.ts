@@ -1,9 +1,33 @@
-var getConnection = require('../../config/db.service');
+import * as getConnection from '../../config/db.service';
 export class ProductController 
 {
-	public load(req, res, next,newProduct) {
+	public get (req, res) {
+		console.log('get');
+		return res.json(req.id);
 	}
-	public get(req, res,id) 
+
+	/*public list(req, res) {
+	
+
+	}*/
+
+	public load(req, res, next,id) {
+		console.log('Product Loaded: ' + id);
+		req.id = id;
+		return next();
+	}
+
+	public update(req, res) {
+		console.log('update');
+		return res.json(req.id);
+	}
+
+	public remove(req, res) {
+		console.log('delete');
+		return res.json(req.id);
+	}
+
+	/*public get(req, res,id) 
 	{
 		var id = req.params.id;
 		getConnection (function (err, con) 
@@ -25,11 +49,8 @@ export class ProductController
 					//console.log(product);
 				});
 			});
-	}
+	}*/
 
-	public update(req, res) {
-
-	}
 
 	public list(req, res)
 	{
@@ -43,9 +64,7 @@ export class ProductController
 			}
 			
 			var productQuery = 'select * from product';
-			
 			console.log("con: " + con); 
-			
 			con.query(productQuery, function(err, product){
 			
 				con.release();
@@ -56,7 +75,7 @@ export class ProductController
 
 	}
 
-	public remove(req, res,id)
+	/*public remove(req, res,id)
 	{
 
 		var id = req.params.id;
@@ -79,5 +98,5 @@ export class ProductController
 					//console.log(product);
 				});
 			});
-	}
+	}*/
 }
