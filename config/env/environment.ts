@@ -1,6 +1,10 @@
 export default class Environment {
-	constructor(private _env: string, private _MYSQL_DEBUG: boolean, private _jwt_secret: string, private _app_port: number = 4040,
-		private _db_host: string, private _db_name: string, private _db_user: string, private _db_pass: string, private _db_port: number = 3306) {
+	constructor(private _env: string, private _MYSQL_DEBUG: boolean, 
+				private _jwt_secret: string, 
+				private _app_port: number = 4040,
+				private _db_host: string, private _db_name: string, 
+				private _db_user: string, private _db_pass: string, 
+				private _db_port: number = 3306) {
 
 	}
 

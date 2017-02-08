@@ -5,9 +5,9 @@ var UserController = (function () {
     }
     UserController.prototype.load = function (req, res, next, id) {
         req.id = id;
-        return next(req);
+        return next(req, id);
     };
-    UserController.prototype.get = function (req, res) {
+    UserController.prototype.get = function (req, res, id) {
         res.json(req.id);
     };
     UserController.prototype.update = function (req, res) {
@@ -15,13 +15,20 @@ var UserController = (function () {
     UserController.prototype.list = function (req, res) {
         getConnection(function (err, con) {
             if (err) {
+                console.log("getConnection (user list) error");
                 res.json(false);
             }
             var userQuery = 'select * from user';
-            console.log("con: " + con);
-            con.query(userQuery, function (err, user) {
+            console.log('database connection (user list) thread id: ' + con.threadId);
+            con.query(userQuery, function (err, users) {
                 con.release();
-                res.json(user);
+                if (err) {
+                    console.log("userQuery (user list) error");
+                    res.json(false);
+                }
+                else {
+                    res.json(users);
+                }
             });
         });
     };

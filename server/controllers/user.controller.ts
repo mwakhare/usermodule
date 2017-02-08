@@ -1,17 +1,47 @@
 
-//import * as pool from '../../config/db.service';
-//import * as dbSql  from '../../config/db.service';
-//import * as getConnection  from '../../config/db.service';
 var getConnection = require('../../config/db.service');
 
 export class UserController {
 	public load(req, res, next, id) {
 		req.id = id;
+		//res.json(req.id);
 		return next(req);
 	}
 
-	public get(req, res) {
+	public get (req, res) {
 		res.json(req.id);
+
+		//data base connection			
+		// getConnection (function (err, con) 
+		// {
+  							
+		// 	if(err) 
+		// 	{  
+		// 		console.log("getConnection (user getone) error");
+		// 		res.json (false);
+		// 	}
+
+		// 	var userIdToFind = req.id;			
+		// 	var getOneUserQuery = "SELECT * FROM user WHERE id = ?";
+								
+		// 	console.log ('database connection (user getone) thread id: ' + con.threadId);
+								
+		// 	con.query(getOneUserQuery, [userIdToFind], function(err, users){
+				
+		// 		con.release();
+
+		// 		if(err) 
+		// 		{  
+		// 			console.log("userQuery (user getone) error");
+		// 			res.json (false);
+		// 		}
+		// 		else
+		// 		{
+		// 			res.json (users);
+		// 		}
+		// 	});
+		// });
+
 	}
 
 	public update(req, res) {
@@ -19,38 +49,35 @@ export class UserController {
 	}			
 
 	public list(req, res) {
-		//res.json(1);
-						// 		var userQuery = 'select * from user';
-								
-						// 		dbSql.pool (function(err, con) { // the function is called when you have a connection
-								
-						// 		if(err) throw err; // or handle it differently than throwing it
-								
-						// 		console.log("con: " + con); // not undefined anymore
-								
-						// 		con.query(userQuery,function(err,user){
-						// 		con.release();
-						// 	}) 
-						// });
-						
-						getConnection (function (err, con) 
-						{
+		//data base connection			
+		getConnection (function (err, con) 
+		{
   							
-							if(err) 
-							{ /* handle your error here */ 
-								res.json (false);
-							}
-							
-							var userQuery = 'select * from user';
-							
-							console.log("con: " + con); //displays undefined
-							
-							con.query(userQuery, function(err, user){
-							
-								con.release();
-								res.json (user);
-							});
-						});
+			if(err) 
+			{  
+				console.log("getConnection (user list) error");
+				res.json (false);
+			}
+								
+			var userQuery = 'select * from user';
+								
+			console.log ('database connection (user list) thread id: ' + con.threadId);
+								
+			con.query(userQuery, function(err, users){
+				
+				con.release();
+
+				if(err) 
+				{  
+					console.log("userQuery (user list) error");
+					res.json (false);
+				}
+				else
+				{
+					res.json (users);
+				}
+			});
+		});
 
 	}
 			

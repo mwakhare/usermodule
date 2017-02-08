@@ -23,15 +23,6 @@ import * as config from './env';
 //     }
 // }
 
-//   export const pool = mysql.createPool ({
-//                 connectionLimit : 100, //max limit to fix.
-//                 host     : (<any>config).db_host(),
-//                 user     : (<any>config).db_user(),
-//                 password : (<any>config).db_pass(),
-//                 database : (<any>config).db_name()
-//             });
-
-
         
 var pool  = mysql.createPool({
                 connectionLimit : 100, //max limit to fix.
@@ -39,45 +30,24 @@ var pool  = mysql.createPool({
                 // user     : (<any>config).db_user(),
                 // password : (<any>config).db_pass(),
                 // database : (<any>config).db_name()
-                 host     : 'localhost',
+                host     : 'localhost',
                 user     : 'milind',
                 password : 'Tori@2016',
                 database : 'korsall'
 });
 
-var getConnection = function (cb) {
+var getConnection = function (callback) {
     pool.getConnection(function (err, connection) {
         //if(err) throw err;
-        //pass the error to the cb instead of throwing it
-        if(err) {
-          return cb(err);
+        //pass the error to the callback instead of throwing it
+        if(err) 
+        {
+            console.log("pool.getConnection error");
+            return callback(err);
         }
-        cb(null, connection);
+        callback(null, connection);
     });
 };
+
 module.exports = getConnection;
 
-//module.exports.pool = pool.getConnection; // export the pools getConnection
-
-// var getConnection = function (cb) {
-//     pool.getConnection(function (err, connection) {
-//         //if(err) throw err;
-//         //pass the error to the cb instead of throwing it
-//         if(err) {
-//           return cb(err);
-//         }
-//         cb(null, connection);
-//     });
-// };
-
-// module.exports = getConnection;
-
-
-// var mySQL = require('mysql');
-// var pool  = mySQL.createPool({
-//     host: config.host,
-//     user: config.user,
-//     password: config.password,
-//     database: config.database
-// });
-// module.exports.pool = pool.getConnection; // export the pools getConnection

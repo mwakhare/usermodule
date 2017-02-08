@@ -7,12 +7,13 @@ var pool = mysql.createPool({
     password: 'Tori@2016',
     database: 'korsall'
 });
-var getConnection = function (cb) {
+var getConnection = function (callback) {
     pool.getConnection(function (err, connection) {
         if (err) {
-            return cb(err);
+            console.log("pool.getConnection error");
+            return callback(err);
         }
-        cb(null, connection);
+        callback(null, connection);
     });
 };
 module.exports = getConnection;
