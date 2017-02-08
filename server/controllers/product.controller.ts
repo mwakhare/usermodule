@@ -75,6 +75,8 @@ export class ProductController
 
 	}
 
+
+
 	/*public remove(req, res,id)
 	{
 

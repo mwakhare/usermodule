@@ -71,13 +71,42 @@ describe('Product Model', () => {
 
 		
 		it('should initialize and return proper values', function() {
-			let product = new Product(20, product_info);
-			product.product_info.Name.should.be.a('string');
-			product.product_info.Name.should.equal('product1');
-			product.product_info.SKU_No.should.be.a('string');
-			product.product_info.Desc.should.be.a('string');
-			product.product_info.price.should.be.a('number');
-			product.product_info.Cat_Id.should.be.a("number");
-		});
+            let product = new Product(1, product_info);
+            product.save();
+            
+            // let customer1 = new Customer(8, user_info1, profile_data);
+            // customer1.update();
+
+             //let customer = new Customer(7, user_info1, profile_data1);
+             //customer.save();
+             //customer.delete();
+
+
+           /*  let product3 = new Product(12, product_info1);
+             product3.update();*/
+
+            // Customer.getOne (8, function (err, user)
+            // {
+            //     if (err)
+            //     {
+            //         console.log(" Customer getOne has error: " + err)
+
+            //     }
+            //     console.log(user);
+            // });
+
+            // Customer.list (function (err, user)
+            // {
+            //     if (err)
+            //     {
+            //         console.log(" Customer list has error: " + err)
+
+            //     }
+            //     console.log(user);
+            // });
+
+             product.product_info.Name.should.be.a('string');
+             product.product_info.Name.should.equal('product1');
+        });
 	});
 });

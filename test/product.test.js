@@ -58,13 +58,10 @@ describe('Product Model', function () {
                 }],
         };
         it('should initialize and return proper values', function () {
-            var product = new Product_1.Product(20, product_info);
+            var product = new Product_1.Product(1, product_info);
+            product.save();
             product.product_info.Name.should.be.a('string');
             product.product_info.Name.should.equal('product1');
-            product.product_info.SKU_No.should.be.a('string');
-            product.product_info.Desc.should.be.a('string');
-            product.product_info.price.should.be.a('number');
-            product.product_info.Cat_Id.should.be.a("number");
         });
     });
 });

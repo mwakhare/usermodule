@@ -5,7 +5,6 @@ import paramValidation from '../../config/param-validation';
 import {ProductController} from '../controllers/product.controller';
 import * as config from '../../config/env';
 
-
 export class ProductRoute {
 	private _router;
 	/*constructor() {
