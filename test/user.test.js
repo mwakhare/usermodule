@@ -56,10 +56,10 @@ describe('User Model', function () {
             }
         };
         var user_info1 = {
-            name: 'bbbb',
-            email: 'bbb@torinit.com',
-            password: 'torinit@bbb',
-            date_of_birth: new Date('1989-02-10T05:30:00'),
+            name: 'dddd',
+            email: 'ddd@torinit.com',
+            password: 'ddddd@ccc',
+            date_of_birth: new Date('1989-03-10T05:30:00'),
             date_of_anniversary: '',
             gender: 1,
             social: [{
@@ -73,7 +73,7 @@ describe('User Model', function () {
                     }
                 }],
             tc: false,
-            mobile_number: 666665565,
+            mobile_number: 4444444,
             verified: [
                 {
                     email: true,
@@ -85,23 +85,30 @@ describe('User Model', function () {
             mac_address: '',
             browser_string: '',
         };
+        var profile_data1 = {
+            profile_pic: '',
+            address: [{
+                    shipping: {
+                        building: 'mmmmmmmmmm',
+                        apartment: 5656,
+                        landmark: 'mmmmm',
+                        street: 'mmmm',
+                        province: 'mmmm',
+                        zip_code: '5655',
+                        country: 'mmmm',
+                        city: 'mmmm'
+                    }
+                }],
+            role: 2,
+            capablities: 3,
+            favourites: {
+                products: [-1],
+                designers: [-1]
+            }
+        };
         it('should initialize and return proper values', function () {
-        });
-        it('getone customer', function () {
-            Customer_1.Customer.getOne(7, function (err, user) {
-                if (err) {
-                    console.log(" Customer getOne has error: " + err);
-                }
-                console.log(user);
-            });
-        });
-        it('getall customers', function () {
-            Customer_1.Customer.list(function (err, user) {
-                if (err) {
-                    console.log(" Customer getall has error: " + err);
-                }
-                console.log(user);
-            });
+            var customer3 = new Customer_1.Customer(12, user_info1, profile_data);
+            customer3.update();
         });
     });
 });

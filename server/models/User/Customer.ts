@@ -22,7 +22,7 @@ export class Customer extends UserBase {
 				console.log({"code" : 100, "status" : "Error in connection database"});
           		return;
         	}   
-        	console.log('connected as id ' + con.threadId);
+        	console.log('save databae thread id: ' + con.threadId);
        
 			let query = `INSERT INTO user (user_info) VALUES ( ? )`;
 			con.query( query, JSON.stringify(this.user_info), (err, result) => {
@@ -46,7 +46,7 @@ export class Customer extends UserBase {
 				console.log({"code" : 100, "status" : "Error in connection database"});
           		return;
         	}   
-        	console.log('connected as id ' + con.threadId);
+        	console.log('update database thread id: user table: ' + con.threadId);
        
 			let query = `UPDATE user SET user_info = ? WHERE id = ?`;
 			con.query( query, [JSON.stringify(this.user_info), this.id], (err, result) => {
@@ -69,7 +69,7 @@ export class Customer extends UserBase {
           		return;
         	}   
 
-        	console.log('connected as id ' + con.threadId);
+        	console.log('update database thread id: user_profile: ' + con.threadId);
        
 			let query = `UPDATE user_profile SET user_id = ?, profile_picture = ?,  
 						address = ?, role = ? capablities = ?, favourites = ? WHERE id = ?`;
@@ -110,22 +110,23 @@ export class Customer extends UserBase {
 				return;
 			}
 								
-			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = ";
+			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
+			console.log(deleteUserQuery);					
+			console.log ('database connection (delete) thread id: ' + con.threadId);
 								
-			console.log ('database connection (d) thread id: ' + con.threadId);
-								
-			con.query(deleteUserQuery, [this.id], function(err, users){
-				
+			con.query(deleteUserQuery, function(err, users){
+				console.log ("delete user profile before release.");
 				con.release();
 
 				if(err) 
 				{  
 					console.log("userQuery (user list) error");
-					return;
+					//return;
 				}
 				else
 				{
-					return true;
+					console.log ("Customer record is deleted.");
+					//return;
 				}
 			});
 
@@ -137,18 +138,18 @@ export class Customer extends UserBase {
   							
 			if(err) 
 			{  
-				console.log("getConnection (Customer delete) error");
+				console.log("(Customer delete) error");
 				return;
 			}
 								
-			var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = ";
-
+			var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = " + this.id;;
+			console.log(deleteUserProfileQuery);
 								
-			console.log ('database connection (d) thread id: ' + con.threadId);
+			console.log ('database connection (delete user profile) thread id: ' + con.threadId);
 								
-			con.query(deleteUserProfileQuery, [this.id], function(err, users){
+			con.query(deleteUserProfileQuery, function(err, users){
 
-				
+				console.log ("delete user profile before release.");
 				con.release();
 
 				if(err) 
@@ -178,24 +179,27 @@ export class Customer extends UserBase {
 				return;
 			}
 								
-			var userQuery = 'SELECT u.id, u.user_info, up.profile_picture, up.address, up.role, up.capablities, up.favourites FROM user as u JOIN user_profile AS up ON u.id = up.user_id where u.id = ';
+			var userQuery = 'SELECT u.id, u.user_info, up.profile_picture, up.address, up.role, up.capablities, up.favourites FROM user as u JOIN user_profile AS up ON u.id = up.user_id where u.id = ' + userToFind;
 								
 			console.log (userQuery);
 
-			console.log ('database connection (user list) thread id: ' + con.threadId);
+			console.log ('database connection (user getOne) thread id: ' + con.threadId);
 								
-			con.query(userQuery, [userToFind], function(err, users){
+			con.query(userQuery, function(err, users){
 				
 				con.release();
 
 				if(err) 
 				{  
-					console.log("userQuery (user list) error");
+					console.log("userQuery (user getOne) error");
 					callback (err);
 				}
 				else
 				{
+					console.log( "before callback: " + users);
+					console.log ("Customer one record is displayed.");
 					callback (err, users);
+					
 				}
 			});
 		});
@@ -219,7 +223,7 @@ export class Customer extends UserBase {
 								
 			console.log ('database connection (user list) thread id: ' + con.threadId);
 			console.log (userQuery);
-								
+
 			con.query(userQuery, function(err, users){
 				
 				con.release();
@@ -231,6 +235,7 @@ export class Customer extends UserBase {
 				}
 				else
 				{
+					console.log ("Customer list is displayed.");
 					callback (err, users);
 				}
 			});

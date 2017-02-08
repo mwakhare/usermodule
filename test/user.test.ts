@@ -60,10 +60,10 @@ describe('User Model', () => {
 
 
 		let user_info1 = {
-			name: 'bbbb',
-			email: 'bbb@torinit.com',
-			password: 'torinit@bbb',
-			date_of_birth: new Date('1989-02-10T05:30:00'),
+			name: 'dddd',
+			email: 'ddd@torinit.com',
+			password: 'ddddd@ccc',
+			date_of_birth: new Date('1989-03-10T05:30:00'),
 			date_of_anniversary: '',
 			gender: 1,
 			social: [{
@@ -77,7 +77,7 @@ describe('User Model', () => {
 				}
 			}],
 			tc: false,
-			mobile_number: 666665565,
+			mobile_number: 4444444,
 			verified: [
 				{
 					email: true,
@@ -90,12 +90,43 @@ describe('User Model', () => {
 			browser_string: '',
 		};
 
+
+		let profile_data1 = {
+			profile_pic: '',
+			address: [{
+				shipping: {
+					building: 'mmmmmmmmmm',
+					apartment: 5656,
+					landmark: 'mmmmm',
+					street: 'mmmm',
+					province: 'mmmm',
+					zip_code: '5655',
+					country: 'mmmm',
+					city: 'mmmm'
+				}
+			}],
+			role: 2,
+			capablities: 3,
+			favourites: {
+				products: [-1],
+				designers: [-1]
+			}
+		};
+
 		it('should initialize and return proper values', function() {
 			//let customer = new Customer(1, user_info, profile_data);
 			//customer.save();
 			
 			// let customer1 = new Customer(8, user_info1, profile_data);
 			// customer1.update();
+
+			 //let customer = new Customer(7, user_info1, profile_data1);
+			 //customer.save();
+			 //customer.delete();
+
+
+			 let customer3 = new Customer(12, user_info1, profile_data);
+			 customer3.update();
 
 			// Customer.getOne (8, function (err, user)
 			// {
@@ -130,28 +161,31 @@ describe('User Model', () => {
 		// 	customer.profile.address[0]['shipping'].street.should.equal('Unnamed Road');
 		// });
 
-		it('getone customer', function(){
-			Customer.getOne (7, function (err, user)
-			{
-				if (err)
-				{
-					console.log(" Customer getOne has error: " + err)
+		// it('getone customer', function(){
+		// 	Customer.getOne (7, function (err, user)
+		// 	{
+		// 		if (err)
+		// 		{
+		// 			console.log(" Customer getOne has error: " + err)
 
-				}
-				console.log(user);
-			});
-		});
+		// 		}
+		// 		console.log(user);
+		// 	});
+		// });
 
-		it('getall customers', function(){
-			Customer.list (function (err, user)
-			{
-				if (err)
-				{
-					console.log(" Customer getall has error: " + err)
+		// it('getall customers', function(){
+		// 	Customer.list (function (err, user)
+		// 	{
+		// 		if (err)
+		// 		{
+		// 			console.log(" Customer getall has error: " + err)
 
-				}
-				console.log(user);
-			});
-		});
+		// 		}
+		// 		console.log(user);
+		// 	});
+		// });
+
+
+		
 	});
 });

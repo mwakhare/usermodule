@@ -16,7 +16,7 @@ var Customer = (function (_super) {
                     console.log({ "code": 100, "status": "Error in connection database" });
                     return;
                 }
-                console.log('connected as id ' + con.threadId);
+                console.log('save databae thread id: ' + con.threadId);
                 var query = "INSERT INTO user (user_info) VALUES ( ? )";
                 con.query(query, JSON.stringify(_this.user_info), function (err, result) {
                     if (err) {
@@ -38,7 +38,7 @@ var Customer = (function (_super) {
                     console.log({ "code": 100, "status": "Error in connection database" });
                     return;
                 }
-                console.log('connected as id ' + con.threadId);
+                console.log('update database thread id: user table: ' + con.threadId);
                 var query = "UPDATE user SET user_info = ? WHERE id = ?";
                 con.query(query, [JSON.stringify(_this.user_info), _this.id], function (err, result) {
                     if (err) {
@@ -58,7 +58,7 @@ var Customer = (function (_super) {
                     console.log({ "code": 100, "status": "Error in connection database" });
                     return;
                 }
-                console.log('connected as id ' + con.threadId);
+                console.log('update database thread id: user_profile: ' + con.threadId);
                 var query = "UPDATE user_profile SET user_id = ?, profile_picture = ?,  \n\t\t\t\t\t\taddress = ?, role = ? capablities = ?, favourites = ? WHERE id = ?";
                 con.query(query, [
                     _this.id,
@@ -88,27 +88,31 @@ var Customer = (function (_super) {
                     console.log("getConnection (Customer delete) error");
                     return;
                 }
-                var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = ";
-                console.log('database connection (d) thread id: ' + con.threadId);
-                con.query(deleteUserQuery, [this.id], function (err, users) {
+                var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
+                console.log(deleteUserQuery);
+                console.log('database connection (delete) thread id: ' + con.threadId);
+                con.query(deleteUserQuery, function (err, users) {
+                    console.log("delete user profile before release.");
                     con.release();
                     if (err) {
                         console.log("userQuery (user list) error");
-                        return;
                     }
                     else {
-                        return true;
+                        console.log("Customer record is deleted.");
                     }
                 });
             });
             getConnection(function (err, con) {
                 if (err) {
-                    console.log("getConnection (Customer delete) error");
+                    console.log("(Customer delete) error");
                     return;
                 }
-                var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = ";
-                console.log('database connection (d) thread id: ' + con.threadId);
-                con.query(deleteUserProfileQuery, [this.id], function (err, users) {
+                var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = " + this.id;
+                ;
+                console.log(deleteUserProfileQuery);
+                console.log('database connection (delete user profile) thread id: ' + con.threadId);
+                con.query(deleteUserProfileQuery, function (err, users) {
+                    console.log("delete user profile before release.");
                     con.release();
                     if (err) {
                         console.log("userQuery (user list) error");
@@ -140,16 +144,18 @@ var Customer = (function (_super) {
                 console.log("getConnection (Customer user list) error");
                 return;
             }
-            var userQuery = 'SELECT u.id, u.user_info, up.profile_picture, up.address, up.role, up.capablities, up.favourites FROM user as u JOIN user_profile AS up ON u.id = up.user_id where u.id = ';
+            var userQuery = 'SELECT u.id, u.user_info, up.profile_picture, up.address, up.role, up.capablities, up.favourites FROM user as u JOIN user_profile AS up ON u.id = up.user_id where u.id = ' + userToFind;
             console.log(userQuery);
-            console.log('database connection (user list) thread id: ' + con.threadId);
-            con.query(userQuery, [userToFind], function (err, users) {
+            console.log('database connection (user getOne) thread id: ' + con.threadId);
+            con.query(userQuery, function (err, users) {
                 con.release();
                 if (err) {
-                    console.log("userQuery (user list) error");
+                    console.log("userQuery (user getOne) error");
                     callback(err);
                 }
                 else {
+                    console.log("before callback: " + users);
+                    console.log("Customer one record is displayed.");
                     callback(err, users);
                 }
             });
@@ -171,6 +177,7 @@ var Customer = (function (_super) {
                     callback(err);
                 }
                 else {
+                    console.log("Customer list is displayed.");
                     callback(err, users);
                 }
             });
