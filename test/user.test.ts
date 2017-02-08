@@ -113,55 +113,8 @@ describe('User Model', () => {
 			}
 		};
 
-		it('should initialize and return proper values', function() {
-			//let customer = new Customer(1, user_info, profile_data);
-			//customer.save();
-			
-			// let customer1 = new Customer(8, user_info1, profile_data);
-			// customer1.update();
-
-			 //let customer = new Customer(7, user_info1, profile_data1);
-			 //customer.save();
-			 //customer.delete();
-
-
-			 let customer3 = new Customer(12, user_info1, profile_data);
-			 customer3.update();
-
-			// Customer.getOne (8, function (err, user)
-			// {
-			// 	if (err)
-			// 	{
-			// 		console.log(" Customer getOne has error: " + err)
-
-			// 	}
-			// 	console.log(user);
-			// });
-
-			// Customer.list (function (err, user)
-			// {
-			// 	if (err)
-			// 	{
-			// 		console.log(" Customer list has error: " + err)
-
-			// 	}
-			// 	console.log(user);
-			// });
-
-			// customer1.user_info.name.should.be.a('string');
-			// customer1.user_info.name.should.equal('Ajitem Sahasrabuddhe');
-		});
-
-		// it('should have the setter and getter functioning properly', function(){
-		// 	let customer = new Customer(1, user_info, profile_data);
-		// 	customer.profile.address[0].should.have.key('shipping');
-		// 	customer.profile.address[0]['shipping'].should.have.property('street');
-		// 	customer.profile.address[0]['shipping'].street.should.equal('');
-		// 	customer.profile.address[0]['shipping'].street = 'Unnamed Road';
-		// 	customer.profile.address[0]['shipping'].street.should.equal('Unnamed Road');
-		// });
-
-		// it('getone customer', function(){
+		
+		// it('getone customer testing', function(){
 		// 	Customer.getOne (7, function (err, user)
 		// 	{
 		// 		if (err)
@@ -173,7 +126,7 @@ describe('User Model', () => {
 		// 	});
 		// });
 
-		// it('getall customers', function(){
+		// it('getall customers testing', function(){
 		// 	Customer.list (function (err, user)
 		// 	{
 		// 		if (err)
@@ -185,7 +138,20 @@ describe('User Model', () => {
 		// 	});
 		// });
 
+		// it('save method testing:', function() {
+		// 	let customer = new Customer(33, user_info1, profile_data1);
+		// 	customer.save();
+		// });
 
+		// it('update method testing:', function() {
+		// 	let customer = new Customer(8, user_info1, profile_data1);
+		// 	customer.update();
+		// });
 		
+
+		// it('delete method testing:', function() {
+		// 	let customer = new Customer(8, user_info1, profile_data1);
+		// 	customer.delete();
+		// });
 	});
 });

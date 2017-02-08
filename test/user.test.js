@@ -106,9 +106,15 @@ describe('User Model', function () {
                 designers: [-1]
             }
         };
-        it('should initialize and return proper values', function () {
-            var customer3 = new Customer_1.Customer(12, user_info1, profile_data);
-            customer3.update();
+        it('one by one CRUD function testing', function () {
+        });
+        it('getall customers testing', function () {
+            Customer_1.Customer.list(function (err, user) {
+                if (err) {
+                    console.log(" Customer getall has error: " + err);
+                }
+                console.log(user);
+            });
         });
     });
 });
