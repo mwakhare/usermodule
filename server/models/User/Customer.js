@@ -12,9 +12,13 @@ var Customer = (function (_super) {
         var _this = _super.call(this, id, user_info) || this;
         _this.save = function () {
             getConnection(function (err, con) {
+                if (err) {
+                    console.log({ "code": 100, "status": "Error in connection database" });
+                    return;
+                }
                 console.log('connected as id ' + con.threadId);
-                var q1 = "INSERT INTO user (user_info) VALUES ( ? )";
-                con.query(q1, JSON.stringify(_this.user_info), function (err, result) {
+                var query = "INSERT INTO user (user_info) VALUES ( ? )";
+                con.query(query, JSON.stringify(_this.user_info), function (err, result) {
                     if (err) {
                         console.log(err);
                         return;
@@ -23,18 +27,26 @@ var Customer = (function (_super) {
                         console.log(result);
                         return;
                     }
-                    console.log('User Created' + result.insertId);
-                    var q2 = "INSERT INTO user_profile (user_id, profile_picture, address, role, capablities, favourites) VALUES ( ?, ?, ?, ?, ?, ? )";
-                    con.query(q2, result.insertId, _this.profile.profile_pic, JSON.stringify(_this.profile.address), _this.profile.role, _this.profile.capablities, JSON.stringify(_this.profile.favourites), function (err, result) {
-                        if (err) {
-                            console.log(err);
-                            return;
-                        }
-                        if (!result.insertId) {
-                            return;
-                        }
-                        console.log('Profile Data Inserted' + result.insertId);
-                    });
+                    _this.id = result.insertId;
+                    console.log('User Created ' + result.insertId);
+                });
+            });
+            getConnection(function (err, con) {
+                if (err) {
+                    console.log({ "code": 100, "status": "Error in connection database" });
+                    return;
+                }
+                console.log('connected as id ' + con.threadId);
+                var query = "INSERT INTO user_profile (user_id, profile_picture, address, role, capablities, favourites) VALUES ( ?, ?, ?, ?, ?, ? )";
+                con.query(query, _this.id, _this.profile.profile_pic, JSON.stringify(_this.profile.address), _this.profile.role, _this.profile.capablities, JSON.stringify(_this.profile.favourites), function (err, result) {
+                    if (err) {
+                        console.log(err);
+                        return;
+                    }
+                    if (!result.insertId) {
+                        return;
+                    }
+                    console.log('Profile Data Inserted' + result.insertId);
                 });
             });
         };
