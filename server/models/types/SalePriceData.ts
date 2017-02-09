@@ -1,0 +1,1 @@
+export type SalePriceData = { type: string, value: number };
