@@ -109,13 +109,12 @@ export class Customer extends UserBase {
 
         	console.log ('Customer update method getConnection2 (user_profile) - database connection thread id: ' + con.threadId);
        
-			let query = `UPDATE user_profile SET user_id = ?, profile_picture = ?,  
-						address = ?, role = ? capablities = ?, favourites = ? WHERE id = ?`;
+			let query = `UPDATE user_profile SET profile_picture = ?,  
+						address = ?, role = ? capablities = ?, favourites = ? WHERE user_id = ?`;
 			
 			console.log ("Customer update method getConnection2 update query: " + query);
 
 			con.query (query, [
-								this.id,
 								this.profile.profile_pic,
 								this.profile.address,
 								this.profile.role,
@@ -164,7 +163,7 @@ export class Customer extends UserBase {
 								
 			console.log ('Customer delete method getConnection1 (user) - database connection thread id: ' + con.threadId);
 
-			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
+			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE user_id = " + this.id;
 
 			console.log("Customer delete method getConnection1 (user)" + deleteUserQuery);		
 
@@ -190,42 +189,42 @@ export class Customer extends UserBase {
 			
 		});
 
-		getConnection (function (err, con) 
-		{
+		// getConnection (function (err, con) 
+		// {
   							
-			if(err) 
-			{  
-				console.log({"code" : 100, "status" : "Error in connection database"});
-				console.log("Customer delete method (getConnection2) has error in getting connnecton." + err);
-				return;
-			}
+		// 	if(err) 
+		// 	{  
+		// 		console.log({"code" : 100, "status" : "Error in connection database"});
+		// 		console.log("Customer delete method (getConnection2) has error in getting connnecton." + err);
+		// 		return;
+		// 	}
 								
-			console.log ('Customer delete method getConnection2 (user) - database connection thread id: ' + con.threadId);
+		// 	console.log ('Customer delete method getConnection2 (user) - database connection thread id: ' + con.threadId);
 								
-			var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = " + this.id;;
+		// 	var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = " + this.id;;
 			
-			console.log("Customer delete method getConnection2 (UserProfile)" + deleteUserProfileQuery);
+		// 	console.log("Customer delete method getConnection2 (UserProfile)" + deleteUserProfileQuery);
 								
-			con.query(deleteUserProfileQuery, function(err, users)
-			{
+		// 	con.query(deleteUserProfileQuery, function(err, users)
+		// 	{
 
-				console.log ("Customer delete method getConnection2 (UserProfile) before release messge.");
+		// 		console.log ("Customer delete method getConnection2 (UserProfile) before release messge.");
 
-				con.release();
+		// 		con.release();
 
-				if(err) 
-				{
-					console.log("Customer delete method 2 - con.query: has error while database query: " + err);
-					return;
-				}
-				else
-				{
-					console.log ("Customer delete method 2 - con.query: Customer - UserProfile record is deleted.");
-					console.log("Customer delete method 2 - con.query: " + users);
-					return;
-				}
-			});
-		});
+		// 		if(err) 
+		// 		{
+		// 			console.log("Customer delete method 2 - con.query: has error while database query: " + err);
+		// 			return;
+		// 		}
+		// 		else
+		// 		{
+		// 			console.log ("Customer delete method 2 - con.query: Customer - UserProfile record is deleted.");
+		// 			console.log("Customer delete method 2 - con.query: " + users);
+		// 			return;
+		// 		}
+		// 	});
+		// });
 		
 		//how to join both results?
 		return false;
