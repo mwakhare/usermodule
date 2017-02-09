@@ -11,7 +11,7 @@ var pool = mysql.createPool({
 var getConnection = function (callback) {
     pool.getConnection(function (err, connection) {
         if (err) {
-            console.log("pool.getConnection error" + err);
+            console.log("db.service:pool.getConnection error: " + err);
             return callback(err);
         }
         callback(null, connection);

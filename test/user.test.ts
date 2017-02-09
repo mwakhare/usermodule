@@ -60,24 +60,24 @@ describe('User Model', () => {
 
 
 		let user_info1 = {
-			name: 'dddd',
-			email: 'ddd@torinit.com',
-			password: 'ddddd@ccc',
-			date_of_birth: new Date('1989-03-10T05:30:00'),
+			name: 'ggggggggggg',
+			email: 'gggggggggg@torinit.com',
+			password: 'gggggggggg@ccc',
+			date_of_birth: new Date('1989-05-05T05:30:00'),
 			date_of_anniversary: '',
 			gender: 1,
 			social: [{
 				facebook: {
-					connected: false,
+					connected: true,
 					id: ''
 				},
 				twitter: {
-					connected: false,
+					connected: true,
 					id: ''
 				}
 			}],
-			tc: false,
-			mobile_number: 4444444,
+			tc: true,
+			mobile_number: 6666666666,
 			verified: [
 				{
 					email: true,
@@ -92,24 +92,24 @@ describe('User Model', () => {
 
 
 		let profile_data1 = {
-			profile_pic: '',
+			profile_pic: 'gggggggg',
 			address: [{
 				shipping: {
-					building: 'mmmmmmmmmm',
-					apartment: 5656,
-					landmark: 'mmmmm',
-					street: 'mmmm',
-					province: 'mmmm',
-					zip_code: '5655',
-					country: 'mmmm',
-					city: 'mmmm'
+					building: 'ggggggggggg',
+					apartment: 56566,
+					landmark: 'gggggggggg',
+					street: 'gggggggggg',
+					province: 'ggggggggggg',
+					zip_code: '566655',
+					country: 'ggggggggggg',
+					city: 'ggggggggggg'
 				}
 			}],
-			role: 2,
-			capablities: 3,
+			role: 6,
+			capablities: 6,
 			favourites: {
-				products: [-1],
-				designers: [-1]
+				products: [-6],
+				designers: [-6]
 			}
 		};
 
@@ -127,37 +127,39 @@ describe('User Model', () => {
 		// 	done ();
 		// });
 
-		// it('getall customers testing', function(done){
-		// 	Customer.list (function (err, user)
+		// it('Testmodule:getall customers- ', function(done){
+		// 	Customer.list (function (err, users)
 		// 	{
 		// 		if (err)
 		// 		{
-		// 			console.log(" Customer getall has error: " + err)
+		// 			console.log("user.test.ts:getall customers list has error: " + err)
 
 		// 		}
-		// 		console.log(user);
+
+		// 		console.log(users);
 		// 	});
+
 		// 	done ();
 		// });
 
+		//tested OK.
 		// it('save method testing:', function(done) {
-		// 	let customer = new Customer(33, user_info1, profile_data1);
+		// 	let customer = new Customer(98, user_info1, profile_data1);
 		// 	customer.save();
-
 		// 	done ();
 		// });
 
-		// it('update method testing:', function(done) {
-		// 	let customer = new Customer(8, user_info1, profile_data1);
-		// 	customer.update();
+		it('update method testing:', function(done) {
+			let customer = new Customer(8, user_info1, profile_data1);
+			customer.update();
 
-		// 	done ();
-		// });
+			done ();
+		});
 		
 
-		it('delete method testing:', function() {
-			let customer = new Customer(8, user_info1, profile_data1);
-			customer.delete();
-		});
+		// it('delete method testing:', function() {
+		// 	let customer = new Customer(8, user_info1, profile_data1);
+		// 	customer.delete();
+		// });
 	});
 });

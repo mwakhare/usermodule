@@ -56,24 +56,24 @@ describe('User Model', function () {
             }
         };
         var user_info1 = {
-            name: 'dddd',
-            email: 'ddd@torinit.com',
-            password: 'ddddd@ccc',
-            date_of_birth: new Date('1989-03-10T05:30:00'),
+            name: 'ggggggggggg',
+            email: 'gggggggggg@torinit.com',
+            password: 'gggggggggg@ccc',
+            date_of_birth: new Date('1989-05-05T05:30:00'),
             date_of_anniversary: '',
             gender: 1,
             social: [{
                     facebook: {
-                        connected: false,
+                        connected: true,
                         id: ''
                     },
                     twitter: {
-                        connected: false,
+                        connected: true,
                         id: ''
                     }
                 }],
-            tc: false,
-            mobile_number: 4444444,
+            tc: true,
+            mobile_number: 6666666666,
             verified: [
                 {
                     email: true,
@@ -86,29 +86,30 @@ describe('User Model', function () {
             browser_string: '',
         };
         var profile_data1 = {
-            profile_pic: '',
+            profile_pic: 'gggggggg',
             address: [{
                     shipping: {
-                        building: 'mmmmmmmmmm',
-                        apartment: 5656,
-                        landmark: 'mmmmm',
-                        street: 'mmmm',
-                        province: 'mmmm',
-                        zip_code: '5655',
-                        country: 'mmmm',
-                        city: 'mmmm'
+                        building: 'ggggggggggg',
+                        apartment: 56566,
+                        landmark: 'gggggggggg',
+                        street: 'gggggggggg',
+                        province: 'ggggggggggg',
+                        zip_code: '566655',
+                        country: 'ggggggggggg',
+                        city: 'ggggggggggg'
                     }
                 }],
-            role: 2,
-            capablities: 3,
+            role: 6,
+            capablities: 6,
             favourites: {
-                products: [-1],
-                designers: [-1]
+                products: [-6],
+                designers: [-6]
             }
         };
-        it('delete method testing:', function () {
+        it('update method testing:', function (done) {
             var customer = new Customer_1.Customer(8, user_info1, profile_data1);
-            customer.delete();
+            customer.update();
+            done();
         });
     });
 });
