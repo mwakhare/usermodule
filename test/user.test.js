@@ -106,10 +106,16 @@ describe('User Model', function () {
                 designers: [-12]
             }
         };
-        it('update method testing:', function (done) {
-            var customer = new Customer_1.Customer(7, user_info1, profile_data1);
-            customer.update();
-            done();
+        it('Testmodule:getall customers- ', function (done) {
+            Customer_1.Customer.list(function (err, customers) {
+                if (err) {
+                    console.log("user.test.ts:getall customers list has error: " + err);
+                }
+                customers.should.be.a('array');
+                customers.should.be.json;
+                customers[0].should.have.property('user_info');
+                done();
+            });
         });
     });
 });

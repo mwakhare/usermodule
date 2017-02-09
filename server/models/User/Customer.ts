@@ -169,12 +169,16 @@ export class Customer extends UserBase {
 				console.log("Customer delete method (getConnection1) has error in getting connnecton." + err);
 				return;
 			}
+
+			// var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
+
+			// console.log ("Customer delete method getConnection1 (user)" + deleteUserQuery);	
 								
 			console.log ('Customer delete method getConnection1 (user) - database connection thread id: ' + con.threadId);
 
 			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
 
-			console.log("Customer delete method getConnection1 (user)" + deleteUserQuery);		
+			console.log ("Customer delete method getConnection1 (user)" + deleteUserQuery);		
 
 			con.query(deleteUserQuery, function (err, users)
 			{
@@ -190,8 +194,7 @@ export class Customer extends UserBase {
 
 				 if (users.affectedRows == 1) 
                  {
-                      	console.log({"code" : 100, "status" : "Record is deleted successfully!"});
-						
+                     	console.log({"code" : 100, "status" : "Record is deleted successfully!"});
 						console.log ("user record is deleted.");
                  } 
 				
@@ -199,10 +202,7 @@ export class Customer extends UserBase {
 				console.log ("Customer delete method 1 - con.query: Customer - user record is deleted.");
 				console.log("Customer delete method 1 - con.query: " + users);
 				return;
-				
 			});
-
-			
 		});
 
 		// getConnection (function (err, con) 

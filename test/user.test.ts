@@ -124,34 +124,41 @@ describe('User Model', () => {
 
 		// 		}
 				
-		// 		customer.user_info.name.should.be.a('string');
-		// 		customer.user_info.name.should.equal('aaaa');
+		// 		customer.should.be.json;
+				
+		// 		//customer.user_info.name.should.be.a('string');
+		// 		//customer.user_info.name.should.equal('aaaa');
+		// 		//customer.should.be.a('object');
+		// 		//customer.should.have.property('user_info');
 
-		//		done ();
+		// 		done ();
 		// 		});
-		//});
+		// });
 
 		
 		//database fires first unit test is ok but second fails
-		//  it('Testmodule:getall customers- ', function(done)
-		//  {
-		//  	Customer.list (function (err, customers)
-		//  	{
-		//  		if (err)
-		//  		{
-		//  			console.log("user.test.ts:getall customers list has error: " + err)
 
-		//  		}
+		 it('Testmodule:getall customers- ', function(done)
+		 {
+		 	Customer.list (function (err, customers)
+		 	{
+		 		if (err)
+		 		{
+		 			console.log("user.test.ts:getall customers list has error: " + err)
 
-		//  		//console.log(users);
-		//  	customers.should.be.a('array');
+		 		}
 
-		// 		customers[0].user_info.name.should.be.a('string');
-		// 		customers[0].user_info.name.should.equal('aaaa');
+				customers.should.be.a('array');
+				customers.should.be.json
+		 		customers[0].should.have.property('user_info');
 
-		//  		done ();
-		//  	});
-		//  });
+				//console.log(users);
+				//customers[0].user_info.name.should.be.a('string');
+				//customers[0].user_info.name.should.equal('aaaa');
+
+		 		done ();
+		 	});
+		 });
 
 		//tested OK.
 		// it('save method testing:', function(done) 
@@ -163,13 +170,13 @@ describe('User Model', () => {
 		// });
 
 		
-		it('update method testing:', function(done) 
-		{
-			let customer = new Customer(7, user_info1, profile_data1);
-			customer.update();
+		// it('update method testing:', function(done) 
+		// {
+		// 	let customer = new Customer(7, user_info1, profile_data1);
+		// 	customer.update();
 
-			done ();
-		});
+		// 	done ();
+		// });
 		
 
 		// it('delete method testing:', function(done) 
@@ -178,5 +185,6 @@ describe('User Model', () => {
 		//  	customer.delete();
 		// 	done ();
 		// });
+
 	});
 });
