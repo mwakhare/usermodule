@@ -92,7 +92,7 @@ export class Customer extends UserBase {
 					return;
 				}
 
-				this.id = result.insertId;
+				//this.id = result.insertId;
 				
 				console.log('Customer update method1: User updated: ' + result.insertId);
 			});
@@ -109,17 +109,26 @@ export class Customer extends UserBase {
 
         	console.log ('Customer update method getConnection2 (user_profile) - database connection thread id: ' + con.threadId);
        
-			let query = `UPDATE user_profile SET profile_picture = ?,  
-						address = ?, role = ? capablities = ?, favourites = ? WHERE user_id = ?`;
+			let query = `UPDATE user_profile SET 
+						profile_picture = ?,  
+						address = ?, 
+						role = ? 
+						capablities = ?, 
+						favourites = ? 
+						WHERE user_id = ?`;
 			
 			console.log ("Customer update method getConnection2 update query: " + query);
 
+			let strProfile_picture = <string> this.profile.profile_pic;
+			let addressStringify = JSON.stringify (this.profile.address);
+			let favouritesStringify = JSON.stringify (this.profile.favourites);
+
 			con.query (query, [
-								this.profile.profile_pic,
-								this.profile.address,
+								strProfile_picture,
+								addressStringify,
 								this.profile.role,
 								this.profile.capablities,
-								this.profile.favourites,
+								favouritesStringify,
 								this.id
 							], 
 						(err, result) => 
@@ -140,7 +149,7 @@ export class Customer extends UserBase {
 					return;
 				}
 
-				this.id = result.insertId;
+				//this.id = result.insertId;
 
 				console.log('Customer update method2: User_profile is Updated result: ' + result.insertId);
 			});
@@ -163,7 +172,7 @@ export class Customer extends UserBase {
 								
 			console.log ('Customer delete method getConnection1 (user) - database connection thread id: ' + con.threadId);
 
-			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE user_id = " + this.id;
+			var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
 
 			console.log("Customer delete method getConnection1 (user)" + deleteUserQuery);		
 
@@ -178,12 +187,19 @@ export class Customer extends UserBase {
 					console.log("Customer delete method 1 - con.query: has error while database query: " + err);
 					return;
 				}
-				else
-				{
-					console.log ("Customer delete method 1 - con.query: Customer - user record is deleted.");
-					console.log("Customer delete method 1 - con.query: " + users);
-					return;
-				}
+
+				 if (users.affectedRows == 1) 
+                 {
+                      	console.log({"code" : 100, "status" : "Record is deleted successfully!"});
+						
+						console.log ("user record is deleted.");
+                 } 
+				
+				
+				console.log ("Customer delete method 1 - con.query: Customer - user record is deleted.");
+				console.log("Customer delete method 1 - con.query: " + users);
+				return;
+				
 			});
 
 			

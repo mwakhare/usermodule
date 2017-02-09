@@ -16,9 +16,11 @@
         {
             "type": "node",
             "request": "attach",
-            "name": "Attach to Process",
+            "address": "localhost",
+            "name": "Debug Mocha Test",
             "port": 5858,
+            "sourceMaps": false,
             "outFiles": []
-        }
+       }
     ]
 }

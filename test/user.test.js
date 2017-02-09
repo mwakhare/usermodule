@@ -5,10 +5,10 @@ chai.should();
 describe('User Model', function () {
     describe('Initialize Object', function () {
         var user_info = {
-            name: 'Ajitem Sahasrabuddhe',
-            email: 'asahasrabuddhe@torinit.com',
-            password: 'torinit@123',
-            date_of_birth: new Date('1989-09-30T05:30:00'),
+            name: 'Anil Shasri',
+            email: 'Shasri@torinit.com',
+            password: 'torinit@Shasri',
+            date_of_birth: new Date('1989-01-01T05:30:00'),
             date_of_anniversary: '',
             gender: 1,
             social: [{
@@ -22,7 +22,7 @@ describe('User Model', function () {
                     }
                 }],
             tc: true,
-            mobile_number: 8888324979,
+            mobile_number: 3333333333,
             verified: [
                 {
                     email: true,
@@ -56,9 +56,9 @@ describe('User Model', function () {
             }
         };
         var user_info1 = {
-            name: 'ggggggggggg',
-            email: 'gggggggggg@torinit.com',
-            password: 'gggggggggg@ccc',
+            name: 'ooooo',
+            email: 'ooooooooo@torinit.com',
+            password: 'oooooooooo@ccc',
             date_of_birth: new Date('1989-05-05T05:30:00'),
             date_of_anniversary: '',
             gender: 1,
@@ -73,7 +73,7 @@ describe('User Model', function () {
                     }
                 }],
             tc: true,
-            mobile_number: 6666666666,
+            mobile_number: 2122,
             verified: [
                 {
                     email: true,
@@ -86,28 +86,28 @@ describe('User Model', function () {
             browser_string: '',
         };
         var profile_data1 = {
-            profile_pic: 'gggggggg',
+            profile_pic: 'ooooooo',
             address: [{
                     shipping: {
-                        building: 'ggggggggggg',
+                        building: 'oooooooooo',
                         apartment: 56566,
-                        landmark: 'gggggggggg',
-                        street: 'gggggggggg',
-                        province: 'ggggggggggg',
-                        zip_code: '566655',
-                        country: 'ggggggggggg',
-                        city: 'ggggggggggg'
+                        landmark: 'ooooooooo',
+                        street: 'ooooooooo',
+                        province: 'oooooooooo',
+                        zip_code: '1212',
+                        country: 'oooooo',
+                        city: 'oooooooooooo'
                     }
                 }],
-            role: 6,
-            capablities: 6,
+            role: 12,
+            capablities: 12,
             favourites: {
-                products: [-6],
-                designers: [-6]
+                products: [-12],
+                designers: [-12]
             }
         };
         it('update method testing:', function (done) {
-            var customer = new Customer_1.Customer(8, user_info1, profile_data1);
+            var customer = new Customer_1.Customer(7, user_info1, profile_data1);
             customer.update();
             done();
         });

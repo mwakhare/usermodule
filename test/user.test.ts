@@ -6,10 +6,10 @@ chai.should();
 describe('User Model', () => {
 	describe('Initialize Object', () => {
 		let user_info = {
-			name: 'Ajitem Sahasrabuddhe',
-			email: 'asahasrabuddhe@torinit.com',
-			password: 'torinit@123',
-			date_of_birth: new Date('1989-09-30T05:30:00'),
+			name: 'Anil Shasri',
+			email: 'Shasri@torinit.com',
+			password: 'torinit@Shasri',
+			date_of_birth: new Date('1989-01-01T05:30:00'),
 			date_of_anniversary: '',
 			gender: 1,
 			social: [{
@@ -23,7 +23,7 @@ describe('User Model', () => {
 				}
 			}],
 			tc: true,
-			mobile_number: 8888324979,
+			mobile_number: 3333333333,
 			verified: [
 				{
 					email: true,
@@ -60,9 +60,9 @@ describe('User Model', () => {
 
 
 		let user_info1 = {
-			name: 'ggggggggggg',
-			email: 'gggggggggg@torinit.com',
-			password: 'gggggggggg@ccc',
+			name: 'ooooo',
+			email: 'ooooooooo@torinit.com',
+			password: 'oooooooooo@ccc',
 			date_of_birth: new Date('1989-05-05T05:30:00'),
 			date_of_anniversary: '',
 			gender: 1,
@@ -77,7 +77,7 @@ describe('User Model', () => {
 				}
 			}],
 			tc: true,
-			mobile_number: 6666666666,
+			mobile_number: 2122,
 			verified: [
 				{
 					email: true,
@@ -92,74 +92,91 @@ describe('User Model', () => {
 
 
 		let profile_data1 = {
-			profile_pic: 'gggggggg',
+			profile_pic: 'ooooooo',
 			address: [{
 				shipping: {
-					building: 'ggggggggggg',
+					building: 'oooooooooo',
 					apartment: 56566,
-					landmark: 'gggggggggg',
-					street: 'gggggggggg',
-					province: 'ggggggggggg',
-					zip_code: '566655',
-					country: 'ggggggggggg',
-					city: 'ggggggggggg'
+					landmark: 'ooooooooo',
+					street: 'ooooooooo',
+					province: 'oooooooooo',
+					zip_code: '1212',
+					country: 'oooooo',
+					city: 'oooooooooooo'
 				}
 			}],
-			role: 6,
-			capablities: 6,
+			role: 12,
+			capablities: 12,
 			favourites: {
-				products: [-6],
-				designers: [-6]
+				products: [-12],
+				designers: [-12]
 			}
 		};
 
-		
-		// it('getone customer testing', function(done){
-		// 	Customer.getOne (7, function (err, user)
+		//database fires but user test fails. 
+		// it('getone customer testing', function(done)
+		// {
+		// 	Customer.getOne (7, function (err, customer)
 		// 	{
 		// 		if (err)
 		// 		{
 		// 			console.log(" Customer getOne has error: " + err)
 
 		// 		}
-		// 		console.log(user);
-		// 	});
-		// 	done ();
-		// });
+				
+		// 		customer.user_info.name.should.be.a('string');
+		// 		customer.user_info.name.should.equal('aaaa');
 
-		// it('Testmodule:getall customers- ', function(done){
-		// 	Customer.list (function (err, users)
-		// 	{
-		// 		if (err)
-		// 		{
-		// 			console.log("user.test.ts:getall customers list has error: " + err)
+		//		done ();
+		// 		});
+		//});
 
-		// 		}
+		
+		//database fires first unit test is ok but second fails
+		//  it('Testmodule:getall customers- ', function(done)
+		//  {
+		//  	Customer.list (function (err, customers)
+		//  	{
+		//  		if (err)
+		//  		{
+		//  			console.log("user.test.ts:getall customers list has error: " + err)
 
-		// 		console.log(users);
-		// 	});
+		//  		}
 
-		// 	done ();
-		// });
+		//  		//console.log(users);
+		//  	customers.should.be.a('array');
+
+		// 		customers[0].user_info.name.should.be.a('string');
+		// 		customers[0].user_info.name.should.equal('aaaa');
+
+		//  		done ();
+		//  	});
+		//  });
 
 		//tested OK.
-		// it('save method testing:', function(done) {
-		// 	let customer = new Customer(98, user_info1, profile_data1);
+		// it('save method testing:', function(done) 
+		// {
+		// 	let customer = new Customer(56, user_info, profile_data);
+
 		// 	customer.save();
 		// 	done ();
 		// });
 
-		it('update method testing:', function(done) {
-			let customer = new Customer(8, user_info1, profile_data1);
+		
+		it('update method testing:', function(done) 
+		{
+			let customer = new Customer(7, user_info1, profile_data1);
 			customer.update();
 
 			done ();
 		});
 		
 
-		// it('delete method testing:', function() {
-		// 	let customer = new Customer(8, user_info1, profile_data1);
-		// 	customer.delete();
+		// it('delete method testing:', function(done) 
+		// {
+		// 	let customer = new Customer(7, user_info1, profile_data1);
+		//  	customer.delete();
+		// 	done ();
 		// });
 	});
 });

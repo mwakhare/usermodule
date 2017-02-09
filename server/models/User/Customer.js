@@ -19,9 +19,9 @@ var Customer = (function (_super) {
                 }
                 console.log('Customer save method - database connection thread id: ' + con.threadId);
                 var query = "INSERT INTO user (user_info) VALUES ( ? )";
-                console.log(query);
+                console.log("Customer save method (getConnection): " + query);
                 con.query(query, JSON.stringify(_this.user_info), function (err, result) {
-                    console.log('Customer save method in con.query before release');
+                    console.log('Customer save method in con.query before release message.');
                     con.release();
                     if (err) {
                         console.log("Customer save method - con.query: has error while database query: " + err);
@@ -47,6 +47,8 @@ var Customer = (function (_super) {
                 var query = "UPDATE user SET user_info = ? WHERE id = ?";
                 console.log("Customer update method getConnection1 update query: " + query);
                 con.query(query, [JSON.stringify(_this.user_info), _this.id], function (err, result) {
+                    console.log("Customer update method getConnection1 (user) before release messge.");
+                    con.release();
                     if (err) {
                         console.log("Customer update method - con.query: has error while database query: " + err);
                         return;
@@ -55,7 +57,6 @@ var Customer = (function (_super) {
                         console.log("Customer update method1 - con.query: result: " + result);
                         return;
                     }
-                    _this.id = result.insertId;
                     console.log('Customer update method1: User updated: ' + result.insertId);
                 });
             });
@@ -66,17 +67,21 @@ var Customer = (function (_super) {
                     return;
                 }
                 console.log('Customer update method getConnection2 (user_profile) - database connection thread id: ' + con.threadId);
-                var query = "UPDATE user_profile SET user_id = ?, profile_picture = ?,  \n\t\t\t\t\t\taddress = ?, role = ? capablities = ?, favourites = ? WHERE id = ?";
+                var query = "UPDATE user_profile SET \n\t\t\t\t\t\tprofile_picture = ?,  \n\t\t\t\t\t\taddress = ?, \n\t\t\t\t\t\trole = ? \n\t\t\t\t\t\tcapablities = ?, \n\t\t\t\t\t\tfavourites = ? \n\t\t\t\t\t\tWHERE user_id = ?";
                 console.log("Customer update method getConnection2 update query: " + query);
+                var strProfile_picture = _this.profile.profile_pic;
+                var addressStringify = JSON.stringify(_this.profile.address);
+                var favouritesStringify = JSON.stringify(_this.profile.favourites);
                 con.query(query, [
-                    _this.id,
-                    _this.profile.profile_pic,
-                    _this.profile.address,
+                    strProfile_picture,
+                    addressStringify,
                     _this.profile.role,
                     _this.profile.capablities,
-                    _this.profile.favourites,
+                    favouritesStringify,
                     _this.id
                 ], function (err, result) {
+                    console.log("Customer update method getConnection2 (user) before release messge.");
+                    con.release();
                     if (err) {
                         console.log("Customer update method 2 - con.query: has error while database query: " + err);
                         return;
@@ -85,9 +90,6 @@ var Customer = (function (_super) {
                         console.log("Customer update method2 - con.query: result: " + result);
                         return;
                     }
-                    _this.id = result.insertId;
-                    console.log('Customer update method2: User updated: ' + result.insertId);
-                    _this.id = result.insertId;
                     console.log('Customer update method2: User_profile is Updated result: ' + result.insertId);
                 });
             });
@@ -95,43 +97,27 @@ var Customer = (function (_super) {
         _this.delete = function () {
             getConnection(function (err, con) {
                 if (err) {
-                    console.log("getConnection (Customer delete) error");
+                    console.log({ "code": 100, "status": "Error in connection database" });
+                    console.log("Customer delete method (getConnection1) has error in getting connnecton." + err);
                     return;
                 }
+                console.log('Customer delete method getConnection1 (user) - database connection thread id: ' + con.threadId);
                 var deleteUserQuery = "DELETE FROM `korsall`.`user` WHERE id = " + this.id;
-                console.log(deleteUserQuery);
-                console.log('database connection (delete) thread id: ' + con.threadId);
+                console.log("Customer delete method getConnection1 (user)" + deleteUserQuery);
                 con.query(deleteUserQuery, function (err, users) {
-                    console.log("delete user profile before release.");
+                    console.log("Customer delete method getConnection1 (user) before release messge.");
                     con.release();
                     if (err) {
-                        console.log("userQuery (delete) error");
-                    }
-                    else {
-                        console.log("Customer record is deleted.");
-                        console.log(users);
-                    }
-                });
-            });
-            getConnection(function (err, con) {
-                if (err) {
-                    console.log("(Customer delete) error");
-                    return;
-                }
-                var deleteUserProfileQuery = "DELETE FROM `korsall`.`user_profile` WHERE id = " + this.id;
-                ;
-                console.log(deleteUserProfileQuery);
-                console.log('database connection (delete user profile) thread id: ' + con.threadId);
-                con.query(deleteUserProfileQuery, function (err, users) {
-                    console.log("delete user profile before release.");
-                    con.release();
-                    if (err) {
-                        console.log("userQuery (delete) error");
+                        console.log("Customer delete method 1 - con.query: has error while database query: " + err);
                         return;
                     }
-                    else {
-                        return true;
+                    if (users.affectedRows == 1) {
+                        console.log({ "code": 100, "status": "Record is deleted successfully!" });
+                        console.log("user record is deleted.");
                     }
+                    console.log("Customer delete method 1 - con.query: Customer - user record is deleted.");
+                    console.log("Customer delete method 1 - con.query: " + users);
+                    return;
                 });
             });
             return false;
